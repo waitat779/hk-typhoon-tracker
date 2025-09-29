@@ -1,0 +1,33 @@
+{
+  "name": "hk-typhoon-tracker",
+  "version": "1.0.0",
+  "description": "Hong Kong Typhoon & Emergency Info Aggregator",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "npx serve . --live",
+    "build": "echo 'No build process needed for static site'",
+    "deploy": "echo 'Deploy to GitHub Pages or Netlify'"
+  },
+  "keywords": [
+    "hong-kong",
+    "typhoon",
+    "emergency",
+    "weather",
+    "transport",
+    "real-time"
+  ],
+  "author": "HK Emergency Tracker Team",
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "^14.2.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/hk-typhoon-tracker.git"
+  },
+  "homepage": "https://yourusername.github.io/hk-typhoon-tracker",
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

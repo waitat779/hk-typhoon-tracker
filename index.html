@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HK Typhoon & Emergency Tracker</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌀</text></svg>">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🌀 HK Emergency Tracker</h1>
+            <div id="typhoon-badge" class="signal-badge">
+                <span id="signal-level">Loading...</span>
+                <span id="signal-duration"></span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="status-bar">
+            <span id="last-update">Last updated: Loading...</span>
+            <button id="refresh-btn" onclick="refreshData()">🔄 Refresh</button>
+        </div>
+
+        <div class="tabs">
+            <button class="tab-btn active" onclick="showTab('weather')">Weather</button>
+            <button class="tab-btn" onclick="showTab('transport')">Transport</button>
+            <button class="tab-btn" onclick="showTab('roads')">Roads</button>
+            <button class="tab-btn" onclick="showTab('utilities')">Utilities</button>
+            <button class="tab-btn" onclick="showTab('services')">Services</button>
+            <button class="tab-btn" onclick="showTab('alerts')">Alerts</button>
+        </div>
+
+        <!-- Weather Tab -->
+        <div id="weather-tab" class="tab-content active">
+            <div class="grid">
+                <div class="card">
+                    <h3>Current Conditions</h3>
+                    <div id="weather-data">
+                        <div class="metric">
+                            <span class="label">Wind Speed:</span>
+                            <span id="wind-speed">--</span>
+                        </div>
+                        <div class="metric">
+                            <span class="label">Direction:</span>
+                            <span id="wind-direction">--</span>
+                        </div>
+                        <div class="metric">
+                            <span class="label">Rainfall:</span>
+                            <span id="rainfall">--</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Forecast Track</h3>
+                    <div id="forecast-map" style="height: 300px;"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Transport Tab -->
+        <div id="transport-tab" class="tab-content">
+            <div class="grid">
+                <div class="card">
+                    <h3>MTR Status</h3>
+                    <div id="mtr-status"></div>
+                </div>
+                <div class="card">
+                    <h3>Bus Services</h3>
+                    <div id="bus-status"></div>
+                </div>
+                <div class="card">
+                    <h3>Ferry Services</h3>
+                    <div id="ferry-status"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Roads Tab -->
+        <div id="roads-tab" class="tab-content">
+            <div class="grid">
+                <div class="card">
+                    <h3>Traffic Conditions</h3>
+                    <div id="traffic-map" style="height: 300px;"></div>
+                </div>
+                <div class="card">
+                    <h3>Road Closures</h3>
+                    <div id="road-closures"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Utilities Tab -->
+        <div id="utilities-tab" class="tab-content">
+            <div class="grid">
+                <div class="card">
+                    <h3>Power Status</h3>
+                    <div id="power-status"></div>
+                </div>
+                <div class="card">
+                    <h3>Network Status</h3>
+                    <div id="network-status"></div>
+                </div>
+                <div class="card">
+                    <h3>Emergency Shelters</h3>
+                    <div id="shelter-status"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Services Tab -->
+        <div id="services-tab" class="tab-content">
+            <div class="grid">
+                <div class="card">
+                    <h3>Open Stores</h3>
+                    <div id="store-status"></div>
+                </div>
+                <div class="card">
+                    <h3>Healthcare</h3>
+                    <div id="healthcare-status"></div>
+                </div>
+                <div class="card">
+                    <h3>Schools</h3>
+                    <div id="school-status"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Alerts Tab -->
+        <div id="alerts-tab" class="tab-content">
+            <div class="grid">
+                <div class="card">
+                    <h3>Flood Warnings</h3>
+                    <div id="flood-alerts"></div>
+                </div>
+                <div class="card">
+                    <h3>Landslide Warnings</h3>
+                    <div id="landslide-alerts"></div>
+                </div>
+                <div class="card">
+                    <h3>Government Announcements</h3>
+                    <div id="gov-announcements"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Data sources: HKO, MTR, Transport Dept, Highways Dept | Updates every 5 minutes</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="scripts/main.js"></script>
+</body>
+</html>
